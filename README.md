@@ -1,16 +1,103 @@
-# flutter_application_1
 
-A new Flutter project.
+# SmartLockerApp
 
-## Getting Started
+SmartLockerApp — это кроссплатформенное мобильное приложение, разработанное на Flutter, предназначенное для взаимодействия с системой умных шкафчиков [SmartLocker](https://github.com/hsesmartlocker/SmartLocker). Приложение позволяет пользователям удобно бронировать оборудование, получать NFC-доступ к шкафчикам, отслеживать историю заявок и управлять своими бронированиями в рамках кампуса.
 
-This project is a starting point for a Flutter application.
+## Основные функции
 
-A few resources to get you started if this is your first Flutter project:
+- Аутентификация пользователей с подтверждением по почте или через корпоративный вход (HSE OAuth)
+- Регистрация новых пользователей с валидацией доменов HSE
+- Возможность восстановления пароля через email с кодом подтверждения
+- Просмотр и управление активными заявками на бронирование
+- Доступ к архиву заявок
+- Доступ к оборудованию через смарт-шкафчики
+- Интерактивный интерфейс для создания новой заявки
+- Адаптация интерфейса под роли пользователя (студент / сотрудник)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Технологии
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter — основной фреймворк для кроссплатформенной разработки
+- Dart — язык программирования приложения
+- REST API — взаимодействие с серверной частью FastAPI
+- SharedPreferences — локальное хранение токенов
+- Поддержка адаптивного дизайна и современного UI
+
+## Структура проекта
+
+```
+SmartLockerApp/
+├── android/                 # Конфигурации для Android
+├── ios/                     # Конфигурации для iOS
+├── lib/
+│   ├── api/                 # Запросы к серверу
+│   ├── models/              # Модели данных
+│   ├── screens/             # Экранные компоненты (вход, регистрация, заявки и т.п.)
+│   ├── utils/               # Утилиты, валидаторы, константы
+│   ├── widgets/             # Общие переиспользуемые виджеты
+│   └── main.dart            # Точка входа в приложение
+├── assets/                  # Шрифты, изображения, иконки
+├── test/                    # Тесты
+├── pubspec.yaml             # Зависимости и настройки
+└── README.md                # Документация
+```
+
+## Установка и запуск
+
+### Требования
+
+- Flutter SDK (рекомендуется последняя стабильная версия)
+- Android Studio / VS Code / Xcode
+- Устройство или эмулятор Android/iOS
+
+### Шаги
+
+1. Клонируйте репозиторий:
+
+```bash
+git clone https://github.com/hsesmartlocker/SmartLockerApp.git
+cd SmartLockerApp
+```
+
+2. Установите зависимости:
+
+```bash
+flutter pub get
+```
+
+3. Запустите эмулятор или подключите физическое устройство
+
+4. Выполните запуск приложения:
+
+```bash
+flutter run
+```
+
+## Настройка окружения
+
+В `lib/api/api_service.dart` настройте базовый адрес API:
+
+```dart
+const String baseUrl = "https://ваш-домен/api";
+```
+
+Если используется вход через HSE (Keycloak), настройте client_id и redirect_uri.
+
+## Тестирование
+
+Для запуска тестов:
+
+```bash
+flutter test
+```
+
+## Возможности развития
+
+- Добавление push-уведомлений
+- Поддержка многопользовательского чата для связи с администрацией
+- Интеграция с картами для поиска ближайших точек выдачи
+- Расширенные фильтры заявок и поиск оборудования
+
+
+## Контрибьютинг
+
+Если вы хотите предложить улучшения, сообщить об ошибке или внести вклад — создайте pull request или issue. Добро пожаловать!
